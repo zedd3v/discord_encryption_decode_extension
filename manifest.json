@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Discord Base64 Decode",
-    "version": "1.1",
+    "version": "1.2",
     "description": "Adds Base64 decode button to message actions.",
     "icons": {
         "16": "icon.png",
