@@ -13,15 +13,13 @@
             y.forEach(z => {
                 if (z.classList.contains("messageContent-2qWWxC")) {
                     var g;
-                    if (z.childNodes[0] != null && z.childNodes[0].tagName.toLowerCase() == "pre") {
-                        g = z.childNodes[0].childNodes[0].innerHTML;
-                    } else if (z.childNodes[0] != null && z.childNodes[0].tagName.toLowerCase() == "code") {
-                        g = z.childNodes[0].innerHTML;
+                    if (z.childNodes[0].nodeType !== Node.TEXT_NODE) {
+						g = (z.childNodes[0].tagName.toLowerCase() == "pre") ? z.childNodes[0].childNodes[0].innerHTML : z.childNodes[0].innerHTML;
                     } else {
                         g = z.innerHTML;
                     }
                     try {
-                        copyTextToClipboard(window.atob(g));
+                        copyTextToClipboard(window.atob(g.toString()));
                         alert("Decoded string copied to clipboard.");
                     } catch(e) {
                         console.log("Failed to decode, probably not base64");
