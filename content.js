@@ -14,13 +14,12 @@
                 if (z.classList.contains("messageContent-2qWWxC")) {
                     var g;
                     if (z.childNodes[0].nodeType !== Node.TEXT_NODE) {
-						g = (z.childNodes[0].tagName.toLowerCase() == "pre") ? z.childNodes[0].childNodes[0].innerHTML : z.childNodes[0].innerHTML;
+						g = (z.childNodes[0].tagName.toLowerCase() == "pre") ? z.childNodes[0].childNodes[0] : z.childNodes[0];
                     } else {
-                        g = z.innerHTML;
+                        g = z;
                     }
                     try {
-                        copyTextToClipboard(window.atob(g.toString()));
-                        alert("Decoded string copied to clipboard.");
+                        g.innerHTML = window.atob(g.innerHTML.toString());
                     } catch(e) {
                         console.log("Failed to decode, probably not base64");
                     }
